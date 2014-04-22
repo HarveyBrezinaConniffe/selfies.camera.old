@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" href="./evc.min.css" />
+    <link rel="stylesheet" href="./jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.1/jquery.mobile.structure-1.4.1.min.css" />
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="jquery-ui-1.10.4.custom/css/smoothness/jquery-ui-1.10.4.custom.min.css" />
+    <script src="./jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.min.js"></script>
+    
+    
+
+  </head>
+  
+  <body>
+    <div id="header" style="background-color: white; width: 100%; padding-left: 10px; padding-top: 10px; padding-bottom: 4px;">
+    </div>
+    <a href="javascript:history.back();" data-role="button" style="width: 120px; margin-left: 20px; margin-top: 20px;">Back</a>
+    <br />
+    <center>
+	<br />
+      <table data-role="table" id="cams-table" data-mode="reflow" class="ui-responsive table-stroke">
+	<thead>
+	  <tr>
+	    <th>Camera URL</th>
+	    <th>Hashtag</th>
+	    <th><center>Live View</center></th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr>
+	    
+	    
+	  </tr>
+	</tbody>
+      </table>
+    </center>
+      <script>
+	
+	$.ajax({
+          type: 'GET',
+          url: '/GetList',
+	  dataType: 'json',
+          context: $('body'),
+          
+                success: function(json) {
+                    if (json.iserr == "Y") {
+                        alert("Error!  "+json.errortext);
+                        }
+                    else {
+	               
+                       for(var i = 0;i<json.cameras.length;i++) {
+			   var camera = json.cameras[i];
+	                   $("#cams-table").append("<tbody><td><a href=\"javascript:showcam('"+camera.surl+"');\">"+camera.surl+"</a></td><td>"+camera.ht+"</td><td><a href=\"javascript:showcam('"+camera.surl+"');\"><img src='"+camera.surl+"' height=100 style='border-style: solid; border-color: green; border-width: 2px;' /></a></td></tbody>");
+	                   //$("#cams-table").append("<tbody><th><a href='"+camera.surl+"'>"+camera.surl+"</a></th><td>"+camera.ht+"</td></tbody>");
+		       }
+	               
+                    }
+           },
+           error: function(jqxhr, textstatus, errorthrown) {
+             alert("Oh oh - something went wrong!.  The error is: "+errorthrown);
+           }
+        });
+
+
+      function showcam(surl) {
+	//alert(surl);
+
+	var camimageid = "camimage"+new Date().getTime();
+
+	var mydialog = document.createElement("DIV");
+        mydialog.id = "mydialog";
+        $("body").append(mydialog);
+        $("#mydialog").prop("title", "Camera");
+        $("#mydialog").html("<img id='"+camimageid+"' src='"+surl+"' style='width: 100%; height: 100%;' />");
+
+        $("#mydialog").dialog({ overlay: { backgroundColor: "white", opacity: 0 }, show: { effect: "explode", duration: 1000 }, height: 360, width: 600, modal: true, create: function(event, ui) { $("body").css({ overflow: 'hidden' })}, beforeClose: function(event, ui) { $("body").css({ overflow: 'inherit' }) }, buttons: [ { text: "Close", click: function() { $(this).dialog("close"); } } ] });
+	//$("#mydialog").css("padding", "0px");
+	//$("#mydialog").css("margin", "0px");
+	
+	setTimeout(function() { reloadCameraImage(surl, camimageid)},  2500);
+	}
+
+      function reloadCameraImage(surl, camimageid) {
+		if (camimageid) {
+			var url = surl + "?" +new Date().getTime();
+			$("#"+camimageid).attr("src", url);
+			setTimeout(function() { reloadCameraImage(surl, camimageid)},  1500);
+		}
+      }
+		
+		
+
+      </script>
+      
+
+  </body>
+</html>

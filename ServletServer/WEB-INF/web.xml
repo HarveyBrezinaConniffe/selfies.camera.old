@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+        <servlet><servlet-name>GetList</servlet-name><servlet-class>com.conniffe.brezina.harvey.GetList</servlet-class></servlet>
+        <servlet-mapping><servlet-name>GetList</servlet-name><url-pattern>/GetList</url-pattern></servlet-mapping>
+  
+	<servlet><servlet-name>GetURL</servlet-name><servlet-class>com.conniffe.brezina.harvey.GetURL</servlet-class>
+	</servlet>
+        <servlet-mapping><servlet-name>GetURL</servlet-name><url-pattern>/GetURL</url-pattern></servlet-mapping>
+
+	<servlet><servlet-name>Authorise</servlet-name><servlet-class>com.conniffe.brezina.harvey.Authorise</servlet-class>
+        </servlet>
+        <servlet-mapping><servlet-name>Authorise</servlet-name><url-pattern>/Authorise</url-pattern></servlet-mapping>       
+	
+        <servlet><servlet-name>SaveSelfieDetails</servlet-name><servlet-class>com.conniffe.brezina.harvey.SaveSelfieDetails</servlet-class>
+        </servlet>
+        <servlet-mapping><servlet-name>SaveSelfieDetails</servlet-name><url-pattern>/SaveSelfieDetails</url-pattern></servlet-mapping>
+
+</web-app>

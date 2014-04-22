@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <link rel="stylesheet" href="./evc.min.css" />
+    <link rel="stylesheet" href="./jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.1/jquery.mobile.structure-1.4.1.min.css" /> 
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script> 
+    <script src="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.js"></script> 
+    <script src="./selfies.js"></script>
+    <script src="./spin.min.js"></script>
+  
+  </head>
+  
+  <body>
+
+      <div id="header" style="background-color: white; width: 100%; padding-left: 10px; padding-top: 10px; padding-bottom: 4px;">
+      <!--<div style="position: absolute; right: 15px; top: 20px;"><a href="#" id="aboutbutton" data-role="button" data-icon="info">About</a></div>-->
+      <div style="position: absolute; right: 15px; top: 30px; color: black;"><a href="./info.html" data-role="button" data-icon="info" data-iconpos="notext" data-theme="a" data-inline="true" >Info</a></div>
+      <center>
+      </center>
+      </div>
+    <center>
+      <br>
+      <div style="left: 500px; top: 96px; color: white; font-size: 30px;"><a style="text-decoration: none; color: white;" href="./tlistcams.html">(<span style="border-bottom: 1px dotted white;">List of active cameras</span>)</a></div>
+      <br>
+      <br>
+      <label for="cameraaddress"><font size=20>Selfie Example #remembrancecam</font></label>
+      <br>
+      <img src="./remembrancecam.png" alt="Remembrance Cam" style="-webkit-transform: rotate(-5deg); -moz-transform: rotate(-5deg); -ms-transform: rotate(-5deg); -o-transform: rotate(-5deg); filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); border-width: 6px; border-style: outset; border-color: #99caff;" />
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <label for="cameraaddress"><font size=50><b>1</b>) Snapshot address of your camera</font></label>
+      <textarea id="caddress" style="width: 500px; font-size: 32px;">http://mycam/snapshot.jpg</textarea>
+      <br>
+
+      <label for="hashtag"><font size=50><b>2</b>) Pick a # tag to trigger photos</font></label>
+      <textarea id="hashtag" style="width: 500px; font-size: 32px;">#myhashtag</textarea>
+      <br>
+
+      <label for="connecttotwitter"><font size=50><b>3</b>) Connect to Your Twitter Account</font></label>
+      <img id="twitterimg" src="./twitter_connect.png" alt="Connect to Twitter" style="cursor: hand; cursor: pointer;"  /> 
+      <label id="connectedtotwittertext" for="connecttotwitter2" style="font-size: 28px; color: #99caff;">(<b>NOT</b> connected yet!)</label>
+      <br />
+
+      <label for="picturetext" style="font-size: 50px;"><b>4</b>) Heading Text for the Photos</label>
+      <textarea id="photoheading" style="width: 500px; font-size: 32px;">Here is your photo</textarea>
+      <br />
+
+      <br />
+      <br />
+      <label for="picturetext" style="font-size: 50px;"><b>5</b>) Press below to Set up your Selfie Camera</label>
+      <a id="submitbutton" href="#" data-role="button" style="width: 500px; height: 60px; font-size: 48px;">Submit</a>
+
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <div id="bottompage" style="background-color: white; width:100%; height: 300px;"></div>
+	
+    </center>
+
+  <div id="loadingdiv" style="width: 100%; height: 100%; display:none; position: fixed; top: 0; left: 0; z-index: 100;"></div>
+  </body>
+</html>
